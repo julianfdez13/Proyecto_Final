@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/julianfdez13/Proyecto_Final/issues"
   },
-  "homepage": "https://github.com/julianfdez13/Proyecto_Final#readme"
+  "homepage": "https://github.com/julianfdez13/Proyecto_Final#readme",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
 }
