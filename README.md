@@ -4,7 +4,7 @@ Este repositorio contiene el código fuente del frontend de la aplicación Motiv
 
 Para poder ver el contenido de este frontend, se debe tener iniciado un servidor local, si no tiene iniciado uno a continuación se le dice cómo dedebe hacerlo:
 
-1. Instale [**NodeJS**](URL "https://nodejs.org/en/"), del enlace que se indica
+1. Instale [**NodeJS**](URL https://nodejs.org/en/), del enlace que se indica
 2. Clone el repositorio
 3. Abra un `terminal` e ingrese a la carpeta donde clonó el repositorio
 4. En la terminal que abrió escriba `npm install`, espere a que haga la instalación de un servidor local
