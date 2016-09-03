@@ -1,0 +1,19 @@
+{
+  "name": "motiva-bici-web",
+  "version": "1.0.0",
+  "description": "MotivaBici componente web",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julianfdez13/Proyecto_Final.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julianfdez13/Proyecto_Final/issues"
+  },
+  "homepage": "https://github.com/julianfdez13/Proyecto_Final#readme"
+}
