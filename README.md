@@ -8,7 +8,7 @@ Para poder ver el contenido de este frontend, se debe tener iniciado un servidor
 2. Clone el repositorio
 3. Abra un `terminal` e ingrese a la carpeta donde clonó el repositorio
 4. En la terminal que abrió escriba `npm install`, espere a que haga la instalación de un servidor local
-5. Luego, en la terminal escriba `node node_modules\http-server\bin\http-server`, y ahí se inicia el servidor
+5. Luego, en la terminal escriba `node node_modules/http-server/bin/http-server`, y ahí se inicia el servidor
 6. Por lo general el serivdor local se genera en el puerto 8080, por lo cual puede acceder a este desde un navegador con la url **localhost:8080**
 
 
