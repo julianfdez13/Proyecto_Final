@@ -36,29 +36,37 @@
         <!--Body-->
         <div class="container">
             <h2>Mis recorridos: </h2>
-            <div class="col-md-5" style="padding-left: 0">
+            <div class="col-md-3" style="padding-left: 0">
                 <div ng-repeat="route in ctrl.routes" class="route-item">
-                    <a href="" ng-click="ctrl.showTime(route)">{{route.dateRoute | date}}</a>
+                    <a href="" ng-click="ctrl.showRoute(route)">{{route.dateRoute | date}}</a>
                 </div>
             </div>
-            <div class="col-md-6" style="border: 2px solid dodgerblue;" ng-show="ctrl.showDiv">
-                <ul>
-                    <li><b>Calorías: </b> {{ctrl.route.calories}} cal</li>
-                    <li><b>Duración: </b> {{ctrl.route.duration.value / 60}} min</li>
-                    <li><b>Kilómetros: </b> {{ctrl.route.kms.value / 1000}} kms</li>
-                    <li><b>Max altitud: </b> {{ctrl.route.maxAltitude}} m.s.n.m</li>
-                    <li><b>Min altitud: </b> {{ctrl.route.minAltitude}}</li>
-                    <li><b>Metros ascenso: </b> <i style="color: red;">PENDIENTE!</i></li>
-                    <li><b>Metros descenso: </b><i style="color: red;">PENDIENTE!</i></li>
-                    <li><b>Velocidad promedio: </b>{{ctrl.route.averageVel * 0.06}} km/h</li>
-                </ul>
-                <div id="map"></div>
-                <button ng-click="ctrl.close()">Cerrar</button>
+            <div class="col-md-9" ng-show="ctrl.showDiv">
+                <div class="col-md-6 col-xs-12">
+                    <ul class="list-items">
+                        <li><b>Calorías: </b> {{ctrl.route.calories}} cal</li>
+                        <li><b>Duración: </b> {{ctrl.route.duration.value / 60}} min</li>
+                        <li><b>Kilómetros: </b> {{ctrl.route.kms.value / 1000}} kms</li>
+                        <li><b>Max altitud: </b> {{ctrl.route.maxAltitude}} m.s.n.m</li>
+                        <li><b>Min altitud: </b> {{ctrl.route.minAltitude}}</li>
+                        <li><b>Metros ascenso: </b> <i style="color: red;">PENDIENTE!</i></li>
+                        <li><b>Metros descenso: </b><i style="color: red;">PENDIENTE!</i></li>
+                        <li><b>Velocidad promedio: </b>{{ctrl.route.averageVel * 0.06}} km/h</li>
+                    </ul>
+                    <canvas id="chart_topography"></canvas>                    
+                    <button ng-click="ctrl.close()">Cerrar</button>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div id="map"></div>
+                </div>
             </div>
         </div>
 
+        <!--Scripts-->
+
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_lsAU18hATgdbY6QwQ9rXHfU5rnhia_k"></script>
         <script src="../assets/js/angular.min.js" charset="utf-8"></script>
+        <script src="../assets/js/Chart.js" charset="utf-8"></script>
         <script src="app.js" charset="utf-8"></script>
     </body>
 </html>

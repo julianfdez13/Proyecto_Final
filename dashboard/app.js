@@ -118,22 +118,76 @@
                 return new Date(a.dateRoute) - new Date(b.dateRoute);
             });
 
-            google.maps.event.addDomListener(window, "load", function () {
-                var mapElement = document.getElementById('map');
-                var map = new google.maps.Map(mapElement, {
-                    center : {
-                        lat : 7.127140,
-                        lng : -73.119174
-                    },
-                    zoom : 14
-                });
-                google.maps.event.trigger(map, 'resize');
-            });
-
-
-            vm.showTime = function (route) {
+            vm.showRoute = function (route) {
                 vm.showDiv = true;
                 vm.route = route;
+                var mapElement = document.getElementById('map');
+                var map = new google.maps.Map(mapElement, {
+                    center : route.source,
+                    zoom : 16
+                });
+
+                var directionsDisplay = new google.maps.DirectionsRenderer();
+                directionsDisplay.setMap(map);
+                /*var directions = */new google.maps.DirectionsService().route({
+                    origin : route.source,
+                    destination : route.destination,
+                    travelMode : google.maps.TravelMode.DRIVING
+                }, function (result) {
+                    directionsDisplay.setDirections(result);
+
+                    var elevations = new google.maps.ElevationService;
+                    elevations.getElevationAlongPath({
+                        'path' : result.routes[0].overview_path,
+                        'samples' : 100
+                    }, function (elevations) {
+                        var elevations_x = [];
+                        var elevations_y = [];
+                        elevations.forEach(function (a) {
+                            elevations_x.push(Math.round(a.elevation*100)/100);
+                            elevations_y.push("");
+                        });
+
+                        var chart = document.getElementById('chart_topography');
+                        var _chart = new Chart(chart, {
+                            type: 'line',
+                            data: {
+                                labels: elevations_y,
+                                datasets: [{
+                                    data: elevations_x,
+                                    linetension: 0,
+                                    backgroundColor: '#00284F',
+                                    borderCapStyle: 'butt',
+                                    pointBackgroundColor: "#fff",
+                                    pointBorderWidth: 1,
+                                    pointHoverRadius: 5,
+                                    borderDashOffset: 0.0,
+                                    pointRadius: 0,
+                                    pointHitRadius: 10,
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    display: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: "Altimetría del recorrido"
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        display: false
+                                    }],
+                                    yAxes: [{
+                                        beginAtZero: false
+                                    }]
+                                }
+                            }
+                        })
+                    })
+
+                });
             };
 
             vm.close = function () {
