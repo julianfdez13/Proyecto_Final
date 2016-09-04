@@ -33,14 +33,16 @@
         </nav>
 
         <!--Body-->
-        <div class="container">
-            <h2>Mis recorridos: </h2>
+        <div class="container" id="routes">
+            <h2 class="title">Mis recorridos: </h2>
             <div class="col-md-3" style="padding-left: 0">
-                <div ng-repeat="route in ctrl.routes" class="route-item">
-                    <a href="" ng-click="ctrl.showRoute(route)">{{route.dateRoute | date}}</a>
-                </div>
+                <a href="" ng-repeat="route in ctrl.routes" ng-click="ctrl.showRoute($index, route)">
+                    <div class="route-item" ng-class="{route_item_active: $index == ctrl.selected}">
+                        {{route.dateRoute | date}}
+                    </div>
+                </a>
             </div>
-            <div class="col-md-9" ng-show="ctrl.showDiv">
+            <div class="col-md-9"  id="show-details" ng-show="ctrl.showDiv">
                 <div class="col-md-6 col-xs-12">
                     <ul class="list-items">
                         <li><b>Calorías: </b> {{ctrl.route.calories}} cal</li>
@@ -53,7 +55,6 @@
                         <li><b>Velocidad promedio: </b>{{ctrl.route.averageVel * 0.06}} km/h</li>
                     </ul>
                     <canvas id="chart_topography"></canvas>
-                    <button ng-click="ctrl.close()">Cerrar</button>
                 </div>
                 <div class="col-md-6 col-xs-12">
                     <div id="map"></div>

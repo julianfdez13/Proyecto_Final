@@ -115,25 +115,29 @@
             vm.routes = vm.user.routes;
 
             vm.routes.sort(function(a,b){
-                return new Date(a.dateRoute) - new Date(b.dateRoute);
+                return new Date(b.dateRoute) - new Date(a.dateRoute);
             });
 
-            vm.showRoute = function (route) {
+            vm.showRoute = function (index, route) {
+                vm.selected = index;
                 vm.showDiv = true;
                 vm.route = route;
+                //Creación del mapa
                 var mapElement = document.getElementById('map');
                 var map = new google.maps.Map(mapElement, {
                     center : route.source,
                     zoom : 16
                 });
-
+                //Creación de las direcciones
                 var directionsDisplay = new google.maps.DirectionsRenderer();
                 directionsDisplay.setMap(map);
-                /*var directions = */new google.maps.DirectionsService().route({
-                    origin : route.source,
-                    destination : route.destination,
-                    travelMode : google.maps.TravelMode.DRIVING
-                }, function (result) {
+                new google.maps.DirectionsService().route(
+                    {
+                        origin : route.source,
+                        destination : route.destination,
+                        travelMode : google.maps.TravelMode.DRIVING
+                    },
+                    function (result) {
                     directionsDisplay.setDirections(result);
 
                     var elevations = new google.maps.ElevationService;
@@ -141,15 +145,16 @@
                         'path' : result.routes[0].overview_path,
                         'samples' : 100
                     }, function (elevations) {
+                        //Se obtienen las elevaciones a lo largo del recorrido, samples es el número de elevaciones obtenidas
                         var elevations_x = [];
                         var elevations_y = [];
                         elevations.forEach(function (a) {
                             elevations_x.push(Math.round(a.elevation*100)/100);
                             elevations_y.push("");
                         });
-
+                        //Configuración de la gráfica
                         var chart = document.getElementById('chart_topography');
-                        var _chart = new Chart(chart, {
+                        new Chart(chart, {
                             type: 'line',
                             data: {
                                 labels: elevations_y,
@@ -159,11 +164,11 @@
                                     backgroundColor: '#00284F',
                                     borderCapStyle: 'butt',
                                     pointBackgroundColor: "#fff",
-                                    pointBorderWidth: 1,
-                                    pointHoverRadius: 5,
+                                    pointBorderWidth: 0,
+                                    pointHoverRadius: 0,
                                     borderDashOffset: 0.0,
                                     pointRadius: 0,
-                                    pointHitRadius: 10,
+                                    pointHitRadius: 0,
                                 }]
                             },
                             options: {
