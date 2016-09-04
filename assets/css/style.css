@@ -128,7 +128,7 @@ html, body {
     display: block;
 }
 
-.control-form-login > input[type="text"], .control-form-login > input[type="password"] {
+.control-form-login > input[type="text"], .control-form-login > input[type="password"], .control-form-login > input[type="email"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -143,6 +143,7 @@ html, body {
 }
 
 .btn-login-in > button {
+    color: #fff;
     height: 45px;
     width: 100%;
     background-color: #0088ff;
@@ -219,7 +220,8 @@ body {
     margin-right: 10px;
 }
 
-.navbar-list > li > img {
+.navbar-list > li > a > img {
+    cursor: pointer;
     border-radius: 100%;
     height: 40px;
     margin: 5px;
@@ -255,26 +257,54 @@ body {
     text-align: center;
     margin-bottom: 4px;
     padding: 10px 0;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 10px   rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 10px  rgba(0, 0, 0, 0.5);
 }
 
 .route-item:hover{
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 10px   rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 10px  rgba(0, 0, 0, 0.5);
     background-color: #355355;
     color: #fff;
+    border-radius: 2px;
 }
 
 .route_item_active {
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 10px   rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 10px  rgba(0, 0, 0, 0.5);
     background-color: #355355;
+    border-radius: 2px;
     color: #ffffff;
 }
 
 #show-details {
     background-color: rgba(255, 255, 255, 1);
-    padding-top: 70px;
+    padding-top: 20px;
     padding-bottom: 40px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius:10px;
     margin-bottom: 30px;
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 10px   rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 10px  rgba(0, 0, 0, 0.5);
+}
+
+#show-profile {
+    background-color: rgba(255, 255, 255, 1);
+    padding-top: 20px;
+    padding-bottom: 40px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius:10px;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 10px   rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 10px  rgba(0, 0, 0, 0.5);
 }
 
 #map {
@@ -292,4 +322,15 @@ body {
 .list-items{
     list-style: none;
     padding-left: 0;
+}
+
+.tooltip {
+    display:none;
+    position:absolute;
+    border:1px solid #333;
+    background-color:#161616;
+    border-radius:5px;
+    padding:10px;
+    color:#fff;
+    font-size:12px Arial;
 }

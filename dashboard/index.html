@@ -21,7 +21,9 @@
                         <p>Usuario: {{ctrl.user.email}}</p>
                     </li>
                     <li>
-                        <img src="../assets/imgs/user.png" alt="Usuario">
+                        <a ng-click="ctrl.showProfile()">
+                            <img src="../assets/imgs/user.png" alt="Usuario" id="user_pic" class="masterTooltip" title="Perfil">
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-list navbar-list-right">
@@ -37,7 +39,7 @@
             <h2 class="title">Mis recorridos: </h2>
             <div class="col-md-3" style="padding-left: 0">
                 <a href="" ng-repeat="route in ctrl.routes" ng-click="ctrl.showRoute($index, route)">
-                    <div class="route-item" ng-class="{route_item_active: $index == ctrl.selected}">
+                    <div class="route-item" ng-class="{route_item_active: $index == ctrl.selected && ctrl.showDiv}">
                         {{route.dateRoute | date}}
                     </div>
                 </a>
@@ -46,13 +48,13 @@
                 <div class="col-md-6 col-xs-12">
                     <ul class="list-items">
                         <li><b>Calorías: </b> {{ctrl.route.calories}} cal</li>
-                        <li><b>Duración: </b> {{ctrl.route.duration.value / 60}} min</li>
-                        <li><b>Kilómetros: </b> {{ctrl.route.kms.value / 1000}} kms</li>
+                        <li><b>Duración: </b> {{ctrl.route.duration.text}}</li>
+                        <li><b>Kilómetros: </b> {{ctrl.route.kms.text}}</li>
                         <li><b>Max altitud: </b> {{ctrl.route.maxAltitude}} m.s.n.m</li>
                         <li><b>Min altitud: </b> {{ctrl.route.minAltitude}}</li>
-                        <li><b>Metros ascenso: </b> <i style="color: red;">PENDIENTE!</i></li>
-                        <li><b>Metros descenso: </b><i style="color: red;">PENDIENTE!</i></li>
-                        <li><b>Velocidad promedio: </b>{{ctrl.route.averageVel * 0.06}} km/h</li>
+                        <li><b>Metros ascenso: </b> {{ctrl.route.mtsUp}}</li>
+                        <li><b>Metros descenso: </b>{{ctrl.route.mtsDown}}</li>
+                        <li><b>Velocidad promedio: </b>{{ctrl.route.averageVel}} km/h</li>
                     </ul>
                     <canvas id="chart_topography"></canvas>
                 </div>
@@ -60,18 +62,77 @@
                     <div id="map"></div>
                 </div>
             </div>
+            <div class="col-md-9" id="show-profile" ng-show="ctrl.showProfileBool">
+                <h1 style="text-align: center">Perfil de Usuario</h1>
+                <form ng-submit="ctrl.saveProfile(ctrl.user)">
+                    <div class="control-form-login">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" ng-model="ctrl.user.email">
+                    </div>
+                    <div class="control-form-login">
+                        <label for="firstName">Primer nombre</label>
+                        <input type="text" id="firstName" ng-model="ctrl.user.firstName">
+                    </div>
+                    <div class="control-form-login">
+                        <label for="secondName">Segundo nombre</label>
+                        <input type="text" id="secondName" ng-model="ctrl.user.secondName">
+                    </div>
+                    <div class="control-form-login">
+                        <label for="firstLastName">Primer apellido</label>
+                        <input type="text" id="firstLastName" ng-model="ctrl.user.firstLastName">
+                    </div>
+                    <div class="control-form-login">
+                        <label for="secondLastName">Segundo apellido</label>
+                        <input type="text" id="secondLastName" ng-model="ctrl.user.secondLastName">
+                    </div>
+                    <div>
+                        <label>Sexo:</label>
+                        <label for="male">Masculino</label>
+                        <input type="radio" ng-model="ctrl.user.sex" value="male" id="male">
+                        <label for="female">Femenino</label>
+                        <input type="radio" ng-model="ctrl.user.sex" value="female" id="female">
+                    </div>
+                    <div class="btn-login-in">
+                        <button type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <!--Scripts-->
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_lsAU18hATgdbY6QwQ9rXHfU5rnhia_k"></script>
         <script src="../assets/js/angular.min.js" charset="utf-8"></script>
+        <script src="../assets/js/jquery-3.1.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
         <script src="../assets/js/Chart.js" charset="utf-8"></script>
         <script src="app.js" charset="utf-8"></script>
         <script>
             function logout(){
                 window.location = "/";
             }
+
+            $(document).ready(function() {
+                // Tooltip only Text
+                $('.masterTooltip').hover(function(){
+                    // Hover over code
+                    var title = $(this).attr('title');
+                    $(this).data('tipText', title).removeAttr('title');
+                    $('<p class="tooltip"></p>')
+                            .text(title)
+                            .appendTo('body')
+                            .fadeIn('slow');
+                }, function() {
+                    // Hover out code
+                    $(this).attr('title', $(this).data('tipText'));
+                    $('.tooltip').remove();
+                }).mousemove(function(e) {
+                    var mousex = e.pageX + 20; //Get X coordinates
+                    var mousey = e.pageY + 10; //Get Y coordinates
+                    $('.tooltip')
+                            .css({ top: mousey, left: mousex })
+                });
+            });
         </script>
     </body>
 </html>

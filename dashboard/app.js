@@ -8,6 +8,7 @@
 
             var vm = this;
             vm.showDiv = false;
+            vm.showProfileBool = false;
             vm.user = {
                     "secondLastName": "",
                     "firstName": "Alfonso",
@@ -113,13 +114,31 @@
                     "sex": "male"
                 };
             vm.routes = vm.user.routes;
+            
+            vm.routes.forEach(function (a) {
+                a.maxAltitude = Math.round((a.maxAltitude)*100)/100;
+                a.minAltitude = Math.round((a.minAltitude)*100)/100;
+                a.mtsUp = Math.round((a.maxAltitude - a.minAltitude)*100)/100;
+                a.mtsDown = Math.round((a.minAltitude)*100)/100;
+                a.averageVel = Math.round((a.averageVel*0.06)*100)/100;
+            })
 
             vm.routes.sort(function(a,b){
                 return new Date(b.dateRoute) - new Date(a.dateRoute);
             });
 
+            vm.showProfile = function () {
+                vm.showDiv = false;
+                vm.showProfileBool = true;
+            };
+            
+            vm.saveProfile = function (user) {
+                console.log(user);
+            }
+
             vm.showRoute = function (index, route) {
                 vm.selected = index;
+                vm.showProfileBool = false;
                 vm.showDiv = true;
                 vm.route = route;
                 //Creación del mapa
