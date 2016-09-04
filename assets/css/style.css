@@ -83,10 +83,23 @@ html, body {
     font-weight: 300;
 }
 
-.modal {
+/*Modal-login*/
+
+.modal-content {
+    width: 500px;
     background-color: rgba(173, 15, 21, 0.86);
     color: #fff;
-    padding-bottom: 0;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    background-color: transparent;
+    border-style: none;
 }
 
 .header-login {
