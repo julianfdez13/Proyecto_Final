@@ -5,9 +5,8 @@
         <title>MotivaBici</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="../assets/imgs/bici.png" type="image/png">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/bootstrap.css" media="screen" charset="utf-8">
-        <link rel="stylesheet" href="../assets/css/style_app.css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="../assets/css/style.css" media="screen" charset="utf-8">
     </head>
     <body ng-controller = "MainCtrl as ctrl">
         <!--NavBar-->
@@ -53,7 +52,7 @@
                         <li><b>Metros descenso: </b><i style="color: red;">PENDIENTE!</i></li>
                         <li><b>Velocidad promedio: </b>{{ctrl.route.averageVel * 0.06}} km/h</li>
                     </ul>
-                    <canvas id="chart_topography"></canvas>                    
+                    <canvas id="chart_topography"></canvas>
                     <button ng-click="ctrl.close()">Cerrar</button>
                 </div>
                 <div class="col-md-6 col-xs-12">
