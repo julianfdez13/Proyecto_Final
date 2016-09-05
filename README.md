@@ -11,6 +11,7 @@ Para poder ver el contenido de este frontend, se debe tener iniciado un servidor
 5. En la terminal que abrió escriba `npm install`, espere a que haga la instalación de un servidor local
 6. Luego, en la terminal escriba `node node_modules/http-server/bin/http-server`, y ahí se inicia el servidor
 7. Por lo general el serivdor local se genera en el puerto 8080, por lo cual puede acceder a este desde un navegador con la url **localhost:8080**
+
 >**Nota:** Estos pasos son válidos para Windows, para abrirlo en linux cambia el paso 3, en la terminal se escribe `nodejs node_modules/http-server/bin/http-server`
 
 Autores:
