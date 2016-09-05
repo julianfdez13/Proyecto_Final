@@ -37,6 +37,7 @@
         <!--Body-->
         <div class="container" id="routes">
             <h2 class="title">Mis recorridos: </h2>
+            <h2 class="title">Kilómetros recorridos: {{ctrl.kmsTotal}}</h2>
             <div class="col-md-3" style="padding-left: 0">
                 <a href="" ng-repeat="route in ctrl.routes" ng-click="ctrl.showRoute($index, route)">
                     <div class="route-item" ng-class="{route_item_active: $index == ctrl.selected && ctrl.showDiv}">
