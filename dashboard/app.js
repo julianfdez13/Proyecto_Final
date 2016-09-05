@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     'use static';
 
     angular.module('motivaBici', [])
@@ -114,7 +114,15 @@
                     "sex": "male"
                 };
             vm.routes = vm.user.routes;
-            
+
+            var kmsTotal = 0;
+
+            vm.routes.forEach(function (a) {
+                kmsTotal += a.kms.value;
+            });
+
+            vm.kmsTotal = Math.round((kmsTotal/1000)*100)/100;
+
             vm.routes.forEach(function (a) {
                 a.maxAltitude = Math.round((a.maxAltitude)*100)/100;
                 a.minAltitude = Math.round((a.minAltitude)*100)/100;
@@ -131,7 +139,7 @@
                 vm.showDiv = false;
                 vm.showProfileBool = true;
             };
-            
+
             vm.saveProfile = function (user) {
                 console.log(user);
             }
