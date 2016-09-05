@@ -83,6 +83,29 @@ html, body {
     font-weight: 300;
 }
 
+.google-logo {
+    margin-left: 40px;
+    margin-top: 130px;
+    float: left;
+    display: block;
+    height: 100px;
+    width: 400px;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px black;
+}
+
+.google-logo > h6 {
+    font-size: 20px;
+    margin: 10px 20px 0 0;
+    float: left;
+}
+
+.google-logo > a > img {
+    height: 50px;
+}
+
 /*Modal-login*/
 
 .modal-content {
@@ -153,6 +176,22 @@ html, body {
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
     border-radius: 9px;
+}
+
+/*Goals*/
+.goals {
+    height: 450px;
+    background: url(../imgs/goals.png) no-repeat center center;
+    background-size: cover;
+}
+
+/*Footer*/
+
+footer {
+    background-color: rgb(173, 15, 21);
+    padding: 10px 0;
+    color: #fff;
+    text-align: center;
 }
 
 /*DASHBOARD*/

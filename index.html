@@ -19,7 +19,7 @@
                     <img src="assets/imgs/bici.png" alt="MotivaBici" class="logo" />
                 </div>
                 <div class="col-md-1 cont-button-header">
-                    <button type="button" class="btn-login">Regístrate</button>
+                    <button type="button" class="btn-login" data-target="#signIn" data-toggle="modal">Regístrate</button>
                 </div>
                 <div class="col-md-1 cont-button-header">
                     <button type="button" class="btn-login" id="btn-login" data-toggle="modal" data-target="#login">Iniciar Sesión</button>
@@ -32,14 +32,16 @@
                 <div class="square-red">
                     <p>Programa, mide y comparte los recorridos con todos tus amigos</p>
                 </div>
+                <div class="google-logo">
+                    <h6>Descárgala en: </h6>
+                    <a href="">
+                        <img src="assets/imgs/googleplay.png" alt="Google Play Logo">
+                    </a>
+                </div>
             </div>
 
 
             <!--Modal login-->
-            <div id="modal_login" style="display: none;">
-
-            </div>
-
             <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -64,22 +66,59 @@
                                 </form>
                             </div>
                         </div>
-                        <!--<div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>-->
                     </div>
                 </div>
             </div>
-
+            <!--Modal Sign in-->
+            <div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="header-login">
+                                <h3>Regístrate</h3>
+                                <img src="assets/imgs/bici2.png" alt="MotivaBici">
+                            </div>
+                            <div class="form-login">
+                                <form>
+                                    <div class="control-form-login">
+                                        <label for="RUser">Correo electrónico:</label>
+                                        <input type="text" placeholder="Email" id="RUser">
+                                    </div>
+                                    <div class="control-form-login">
+                                        <label for="RPassword">Contraseña:</label>
+                                        <input type="password" placeholder="Contraseña" id="RPassword">
+                                    </div>
+                                    <div class="control-form-login">
+                                        <label for="RName">Nombre:</label>
+                                        <input type="text" placeholder="Nombre completo" id="RName">
+                                    </div>
+                                    <div class="control-form-login">
+                                        <label for="RLastName">Apellidos:</label>
+                                        <input type="text" placeholder="Apellidos" id="RlastName">
+                                    </div>
+                                    <div class="btn-login-in">
+                                        <button type="button" onclick="login()">Registrar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="goals"></div>
+
+        <footer>
+            Made by: Sergio Martínez Lizarazo, Laura Ramírez Patiño & Julián Fernández Forero © - Ingeniería de Software | UIS | 2016 - I
+        </footer>
 
         <!-- scripts-->
         <script src="assets/js/jquery-3.1.0.js"></script>
         <script src="assets/js/bootstrap.js" charset="utf-8"></script>
         <script>
             function login() {
-                window.location = "dashboard";
+                window.location = "/dashboard";
             }
         </script>
     </body>
